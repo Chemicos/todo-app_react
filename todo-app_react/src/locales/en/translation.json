@@ -3,5 +3,7 @@
     "What is the task today?": "What is the task today?",
     "Add task": "Add task",
     "Update Task": "Update Task",
-    "Update": "Update"
+    "Update": "Update",
+    "Delete all": "Delete all",
+    "Please enter a task": "Please enter a task"
   }

@@ -10,6 +10,7 @@ uuidv4();
 
 export default function TodoWrapper() {
     const [todos, setTodos] = useState([])
+    const [currentLanguage, setCurrentLanguage] = useState(i18n.language)
     
     const { t } = useTranslation()
 
@@ -33,6 +34,10 @@ export default function TodoWrapper() {
       setTodos(todos.filter(todo => todo.id !== id))
     }
 
+    const clearTodos = () => {
+      setTodos([]);
+    };
+
     const editTodo = (id) => {
       setTodos(todos.map(todo => todo.id === id ?
         {...todo, isEditing: !todo.isEditing} : todo))
@@ -42,13 +47,26 @@ export default function TodoWrapper() {
       setTodos(todos.map(todo => todo.id === id ? 
         {...todo, task, isEditing: !todo.isEditing} : todo))
     }
+    
+    const changeLanguage = (lang) => {
+      i18n.changeLanguage(lang);
+      setCurrentLanguage(lang);
+    };
+
 
   return (
-    <div className="border w-4/5 sm:w-full border-emerald-400 px-8 pt-8 pb-4 rounded">
-      <div className="flex gap-1 text-white justify-end mb-4">
-        <button className="bg-emerald-600 px-2 rounded" onClick={() => i18n.changeLanguage('ro')}>RO</button>
-        <button className="bg-emerald-600 px-2 rounded" onClick={() => i18n.changeLanguage('en')}>EN</button>
+    <div className="sm:border w-4/5 sm:w-full border-emerald-400 sm:px-8 pt-8 sm:pb-4 rounded">
+      <div className="flex gap-2 text-white font-semibold justify-end mb-4">
+        <button 
+          className = {`${currentLanguage === 'ro' ? 'bg-emerald-900' : 'bg-emerald-600'} px-2 py-1 rounded`} 
+          onClick={() => changeLanguage('ro')}>RO
+        </button>
+        <button 
+          className = {`${currentLanguage === 'en' ? 'bg-emerald-900' : 'bg-emerald-600'} px-2 py-1 rounded`} 
+          onClick={() => changeLanguage('en')}>EN
+        </button>
       </div>
+      
       <h1 className="text-white text-2xl sm:text-3xl mb-12">{t('Be Productive!')}</h1>
       <TodoForm addTodo={addTodo} />
       {todos.map((todo) => (
@@ -63,6 +81,14 @@ export default function TodoWrapper() {
             editTodo={editTodo} />
         )
       ))}
+
+    {todos.length > 0 && (
+      <button 
+        className="bg-emerald-700 text-white font-semibold px-2 py-2 rounded" 
+        onClick={clearTodos}>
+          {t('Delete all')}
+      </button>
+    )}
     </div>
   )
 }
