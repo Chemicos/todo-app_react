@@ -55,7 +55,7 @@ export default function TodoWrapper() {
 
 
   return (
-    <div className="sm:border w-4/5 sm:w-full border-emerald-400 sm:px-8 pt-8 sm:pb-4 rounded">
+    <div className="overflow-hidden sm:border w-4/5 sm:w-full border-emerald-400 sm:px-8 pt-8 sm:pb-4 rounded">
       <div className="flex gap-2 text-white font-semibold justify-end mb-4">
         <button 
           className = {`${currentLanguage === 'ro' ? 'bg-emerald-900' : 'bg-emerald-600'} px-2 py-1 rounded`} 
@@ -69,18 +69,22 @@ export default function TodoWrapper() {
       
       <h1 className="text-white text-2xl sm:text-3xl mb-12">{t('Be Productive!')}</h1>
       <TodoForm addTodo={addTodo} />
-      {todos.map((todo) => (
-        todo.isEditing ? (
-          <EditTodoForm editTodo={editTask} task={todo} />
-        ) : (
-          <Todo 
-            task={todo} 
-            key={todo.id} 
-            toggleComplete={toggleComplete}
-            deleteTodo={deleteTodo}
-            editTodo={editTodo} />
-        )
-      ))}
+
+      <div className="todo-list-container mb-6">
+        {todos.map((todo) => (
+          todo.isEditing ? (
+            <EditTodoForm editTodo={editTask} task={todo} />
+          ) : (
+            <Todo 
+              task={todo} 
+              key={todo.id} 
+              toggleComplete={toggleComplete}
+              deleteTodo={deleteTodo}
+              editTodo={editTodo} 
+            />
+          )
+        ))}
+      </div>
 
     {todos.length > 0 && (
       <button 

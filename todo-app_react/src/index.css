@@ -18,3 +18,8 @@
   color: #fff;
   cursor: pointer;
 }
+
+.todo-list-container {
+  max-height: 380px;
+  overflow-y: auto;
+}
