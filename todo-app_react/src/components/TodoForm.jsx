@@ -2,9 +2,9 @@
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 
-export default function TodoForm({addTodo}) {
+export default function TodoForm({ addTodo }) {
     const [value, setValue] = useState("")
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(false)
 
     const { t } = useTranslation()
 
@@ -12,7 +12,7 @@ export default function TodoForm({addTodo}) {
         e.preventDefault()
 
         if (!value.trim()) {
-            setError(true);
+            setError(true)
             return;
         }
 
@@ -41,9 +41,10 @@ export default function TodoForm({addTodo}) {
         <button 
             type="submit" 
             className="
-                bg-emerald-400 p-025
+                bg-emerald-500 p-025
                 cursor-pointer 
                 text-white border-none
+                hover:bg-emerald-600
                 "
         >{t('Add task')}</button>
     </form>
