@@ -9,3 +9,13 @@ Features:
  - Remove task
  - Translation (EN/RO)
  - Responsive design
+
+#Setup:
+
+#1. Install dependencies:
+`npm install`
+
+#2. Run the application:
+`cd .`
+followed by
+`npm run dev`
