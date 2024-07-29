@@ -10,12 +10,12 @@ Features:
  - Translation (EN/RO)
  - Responsive design
 
-#Setup:
+# Setup:
 
-#1. Install dependencies:
+# 1. Install dependencies:
 `npm install`
 
-#2. Run the application:
+# 2. Run the application:
 `cd .`
 followed by
 `npm run dev`
